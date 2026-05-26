@@ -85,6 +85,7 @@ defineProps<{
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 @media (min-width: 768px) {

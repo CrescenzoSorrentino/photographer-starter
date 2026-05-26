@@ -32,6 +32,7 @@ const config = useRuntimeConfig()
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: var(--space-4);
+  text-wrap: balance;
 }
 
 .cta__title {
@@ -41,6 +42,7 @@ const config = useRuntimeConfig()
   text-transform: uppercase;
   line-height: var(--line-height-tight);
   margin-bottom: var(--space-10);
+  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
