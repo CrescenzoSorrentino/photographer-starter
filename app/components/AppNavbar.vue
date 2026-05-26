@@ -100,12 +100,6 @@ const links = [
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  transition: text-shadow var(--duration-base) var(--easing-expo);
-}
-
-.navbar.is-scrolled .navbar__logo {
-  text-shadow: none;
 }
 
 .navbar__links button .iconify {
@@ -122,13 +116,7 @@ const links = [
   letter-spacing: var(--letter-spacing-normal);
   color: var(--foreground-muted);
   text-transform: uppercase;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  transition: color var(--duration-fast) var(--easing-expo),
-              text-shadow var(--duration-base) var(--easing-expo);
-}
-
-.navbar.is-scrolled .navbar__links a {
-  text-shadow: none;
+  transition: color var(--duration-fast) var(--easing-expo);
 }
 
 .navbar__links a:hover {
@@ -147,12 +135,6 @@ const links = [
   cursor: pointer;
   color: var(--foreground);
   font-size: var(--font-size-xl);
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
-  transition: filter var(--duration-base) var(--easing-expo);
-}
-
-.navbar.is-scrolled .navbar__links button {
-  filter: none;
 }
 
 @media (min-width: 768px) {
