@@ -27,7 +27,15 @@ const currentSrc = computed(
 
 <template>
   <section class="hero">
-    <!-- Video background -->
+    <!-- Mobile: poster statico -->
+    <img
+      class="hero__poster"
+      :src="config.public.heroPoster"
+      alt=""
+      aria-hidden="true"
+    />
+
+    <!-- Desktop: video autoplay -->
     <video
       class="hero__video"
       autoplay
@@ -63,19 +71,37 @@ const currentSrc = computed(
   overflow: hidden;
 }
 
-@media (min-width: 768px) {
-  .hero {
-    height: 90svh;
-  }
-}
-
-.hero__video {
+.hero__poster {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 0;
+}
+
+.hero__video {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    height: 90svh;
+  }
+
+  .hero__poster {
+    display: none;
+  }
+
+  .hero__video {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
 }
 
 .hero__nav {

@@ -100,7 +100,7 @@ const links = [
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   transition: text-shadow var(--duration-base) var(--easing-expo);
 }
 
@@ -122,7 +122,7 @@ const links = [
   letter-spacing: var(--letter-spacing-normal);
   color: var(--foreground-muted);
   text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   transition: color var(--duration-fast) var(--easing-expo),
               text-shadow var(--duration-base) var(--easing-expo);
 }
@@ -147,6 +147,12 @@ const links = [
   cursor: pointer;
   color: var(--foreground);
   font-size: var(--font-size-xl);
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3));
+  transition: filter var(--duration-base) var(--easing-expo);
+}
+
+.navbar.is-scrolled .navbar__links button {
+  filter: none;
 }
 
 @media (min-width: 768px) {
