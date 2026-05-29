@@ -37,6 +37,12 @@ export default defineNuxtConfig({
       phone: "+39 333 1234567",
       email: "mario@rossi.it",
 
+      // About
+      aboutPhoto: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?w=900&q=80&fit=crop&crop=faces",
+      aboutName:  "Mario Rossi",
+      aboutBio:      "Fotografo di matrimoni e ritratti con sede a Milano. Racconto storie attraverso la luce, i dettagli e le emozioni autentiche del vostro giorno speciale.",
+      aboutServices: "Fotografia matrimoni,Video making,Ritratti & Book,Reportage eventi,Pre-matrimonio,Drone & Aerial",
+
       // Social
       instagram: "https://instagram.com/mariorossi",
       facebook: "https://facebook.com/mariorossi",
@@ -46,6 +52,9 @@ export default defineNuxtConfig({
       heroVideoEvento2: "/evento-2.mp4",
       heroVideoEvento3: "/evento-3.mp4",
       heroPoster: "/hero-poster.png",
+      heroPoster1: "/hero-poster.png",
+      heroPoster2: "/hero-poster.png",
+      heroPoster3: "/hero-poster.png",
 
       // Hero labels
       heroLabelEvento1: "Evento 1",

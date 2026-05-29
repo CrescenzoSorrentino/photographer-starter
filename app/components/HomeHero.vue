@@ -2,59 +2,59 @@
 const config = useRuntimeConfig();
 
 const links = [
-  {
-    id: "evento-1",
-    label: config.public.heroLabelEvento1,
-    src: config.public.heroVideoEvento1,
-  },
-  {
-    id: "evento-2",
-    label: config.public.heroLabelEvento2,
-    src: config.public.heroVideoEvento2,
-  },
-  {
-    id: "evento-3",
-    label: config.public.heroLabelEvento3,
-    src: config.public.heroVideoEvento3,
-  },
+  { label: config.public.heroLabelEvento1 as string, src: config.public.heroVideoEvento1 as string, poster: config.public.heroPoster1 as string },
+  { label: config.public.heroLabelEvento2 as string, src: config.public.heroVideoEvento2 as string, poster: config.public.heroPoster2 as string },
+  { label: config.public.heroLabelEvento3 as string, src: config.public.heroVideoEvento3 as string, poster: config.public.heroPoster3 as string },
 ];
 
-const active = ref("evento-1");
-const currentSrc = computed(
-  () => links.find((l) => l.id === active.value)?.src ?? "",
-);
+const activeIndex = ref(0);
+const current = computed(() => links[activeIndex.value]!);
+
+function advance() {
+  activeIndex.value = (activeIndex.value + 1) % links.length;
+}
+
+onMounted(() => {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    const interval = setInterval(advance, 8000);
+    onUnmounted(() => clearInterval(interval));
+  }
+});
 </script>
 
 <template>
   <section class="hero">
-    <!-- Mobile: poster statico -->
-    <img
-      class="hero__poster"
-      :src="config.public.heroPoster"
-      alt=""
-      aria-hidden="true"
-    />
+    <!-- Mobile: poster ciclico con fade -->
+    <Transition name="poster-fade" mode="out-in">
+      <img
+        class="hero__poster"
+        :key="activeIndex"
+        :src="current.poster"
+        alt=""
+        aria-hidden="true"
+      />
+    </Transition>
 
     <!-- Desktop: video autoplay -->
     <video
       class="hero__video"
       autoplay
       muted
-      loop
       playsinline
-      :key="currentSrc"
-      :poster="config.public.heroPoster"
+      @ended="advance"
+      :key="activeIndex"
+      :poster="current.poster"
     >
-      <source :src="currentSrc" type="video/mp4" />
+      <source :src="current.src" type="video/mp4" />
     </video>
 
     <!-- Links bottom -->
     <nav class="hero__nav">
       <ul>
-        <li v-for="link in links" :key="link.id">
+        <li v-for="(link, index) in links" :key="index">
           <button
-            :class="{ 'is-active': active === link.id }"
-            @click="active = link.id"
+            :class="{ 'is-active': activeIndex === index }"
+            @click="activeIndex = index"
           >
             {{ link.label }}
           </button>
@@ -78,6 +78,16 @@ const currentSrc = computed(
   height: 100%;
   object-fit: cover;
   z-index: 0;
+}
+
+.poster-fade-enter-active,
+.poster-fade-leave-active {
+  transition: opacity var(--duration-slow) var(--easing-expo);
+}
+
+.poster-fade-enter-from,
+.poster-fade-leave-to {
+  opacity: 0;
 }
 
 .hero__video {

@@ -11,15 +11,14 @@ defineProps<{
 
 <template>
   <section class="hero">
-    <template v-if="type === 'video'">
-      <video
-        class="hero__media"
-        autoplay muted loop playsinline
-        :poster="poster"
-      >
-        <source :src="image" type="video/mp4" />
-      </video>
-    </template>
+    <video
+      v-if="type === 'video'"
+      class="hero__media"
+      autoplay muted loop playsinline
+      :poster="poster"
+    >
+      <source :src="image" type="video/mp4" />
+    </video>
     <img
       v-else
       :src="heroImage || image"

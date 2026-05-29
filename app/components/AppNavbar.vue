@@ -43,7 +43,7 @@ const links = [
   </header>
 
   <Teleport to="body">
-    <div class="mobile-menu" :class="{ 'is-open': isOpen }">
+    <div class="mobile-menu" :class="{ 'is-open' : isOpen }">
       <ul>
         <li v-for="link in links" :key="link.href">
           <a
